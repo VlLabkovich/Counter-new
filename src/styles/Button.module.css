@@ -1,0 +1,54 @@
+/*Buttons*/
+
+.styledBtn {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border: 2px solid #43d4e8;
+    border-radius: 10px;
+    gap: 30px;
+    padding: 10px;
+}
+
+.incBtn {
+    width: 100px;
+    height: 40px;
+    color: #2d2a2a;
+    font-size: 24px;
+    background-color: #43d4e8;
+    border: 2px solid #43d4e8;
+    border-radius: 10px;
+}
+
+.incBtn:hover {
+    background-color: #2d2a2a;
+    color: #43d4e8;
+}
+
+.resBtn {
+    width: 100px;
+    height: 40px;
+    color: #2d2a2a;
+    font-size: 24px;
+    background-color: #CE4141B2;
+    border: 2px solid #CE4141B2;
+    border-radius: 10px;
+}
+
+.resBtn:hover {
+    background-color: #2d2a2a;
+    color: #CE4141B2;
+
+    border: 2px solid #CE4141B2;
+}
+
+.btnDisabled {
+    width: 100px;
+    height: 40px;
+    background-color: #ffe7e7;
+    color: #2d2a2a;
+    font-size: 24px;
+    /*border: 2px solid #43d4e8;*/
+    border-radius: 10px;
+    cursor: not-allowed;
+}

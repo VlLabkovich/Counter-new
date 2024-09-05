@@ -4,7 +4,7 @@ type TypeButtonProps = {
     name: string
     classname: string
     onClick: () => void
-    disabled: boolean
+    disabled?: boolean
 }
 
 
