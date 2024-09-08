@@ -6,27 +6,41 @@ import {Counter} from "../counter/Counter";
 import {Input} from "../Input";
 
 export const CounterSettings = () => {
+
+    // Four UseState
+    //
     // const [startState, setStartState] = useState<number>(0);
     // const [maxState, setMaxState] = useState<number>(0);
-    // Состояние для передачи настроек в Counter
+    //
     // const [appliedStartState, setAppliedStartState] = useState<number>(0);
     // const [appliedMaxState, setAppliedMaxState] = useState<number>(0);
+    //
+    // let onChangeStartValue = (event: ChangeEvent<HTMLInputElement>) => {
+    //     setStartState(Number(event.currentTarget.value))
+    // }
+    //
+    // let onChangeMaxValue = (event: ChangeEvent<HTMLInputElement>) => {
+    //     setMaxState(Number(event.currentTarget.value))
+    // };
+    //
+    // let onClickValueState = () => {
+    //
+    //     setAppliedStartState(startState);
+    //     setAppliedMaxState(maxState);
+    //
+    // };
 
     const [onChangeState, setOnChangeState] = useState({
         startState: 0,
         maxState: 0,
     });
 
-    // console.log(onChangeState.startState)
-
     const [onClickState, setOnClickState] = useState({
         appliedStartState: 0,
         appliedMaxState: 0,
     });
 
-    // console.log(onClickState.appliedMaxState)
     let onChangeStartValue = (event: ChangeEvent<HTMLInputElement>) => {
-
         const value = Number(event.currentTarget.value);
         setOnChangeState((prevState) => ({
             ...prevState,
@@ -51,9 +65,11 @@ export const CounterSettings = () => {
         setOnClickState((prevState) => ({...prevState, appliedMaxState: valueMaxState}))
     };
 
-    const isInvalidCounterSettings = ((onChangeState.startState < 0) || (onChangeState.maxState < 0))
-        || onChangeState.startState > onChangeState.maxState
-        || onChangeState.startState === onChangeState.maxState
+    const isInvalidCounterStartSettings = (onChangeState.startState < 0)
+        || (onChangeState.startState >= onChangeState.maxState)
+
+    const isInvalidCounterMaxSettings = (onChangeState.maxState < 0)
+        || (onChangeState.startState >= onChangeState.maxState)
 
     return (
         <>
@@ -65,7 +81,7 @@ export const CounterSettings = () => {
                             type="number"
                             onChange={onChangeMaxValue}
                             value={onChangeState.maxState}
-                            className={isInvalidCounterSettings ? s.invalidValue : ''}
+                            className={isInvalidCounterMaxSettings ? s.invalidValue : ''}
                         />
                     </div>
 
@@ -75,7 +91,7 @@ export const CounterSettings = () => {
                             type="number"
                             onChange={onChangeStartValue}
                             value={onChangeState.startState}
-                            className={isInvalidCounterSettings ? s.invalidValue : ''}
+                            className={isInvalidCounterStartSettings ? s.invalidValue : ''}
                         />
                     </div>
                 </div>
@@ -83,9 +99,10 @@ export const CounterSettings = () => {
                 <div className={btn.styledBtn}>
                     <Button
                         name="SET"
-                        classname={ isInvalidCounterSettings ? btn.btnDisabled : btn.incBtn }
+                        classname={
+                            isInvalidCounterStartSettings || isInvalidCounterMaxSettings ? btn.btnDisabled : btn.incBtn}
                         onClick={onClickValueState}
-                        disabled={ isInvalidCounterSettings }
+                        disabled={isInvalidCounterStartSettings || isInvalidCounterMaxSettings}
                     />
                 </div>
             </div>
@@ -156,8 +173,7 @@ export default CounterSettings;
 //     };
 //
 //     const isInvalidCounterSettings = ((onChangeState.startState < 0) || (onChangeState.maxState < 0))
-//         || onChangeState.startState > onChangeState.maxState
-//         || onChangeState.startState === onChangeState.maxState
+//         || onChangeState.startState >= onChangeState.maxState
 //
 //     return (
 //         <>
