@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {TableCounter} from "./TableCounter";
 import Button from "../Button";
 import s from "../../styles/Counter.module.css"
 import btn from "../../styles/Button.module.css"

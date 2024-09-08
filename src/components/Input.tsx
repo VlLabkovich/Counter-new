@@ -2,9 +2,9 @@ import React, {ChangeEvent} from 'react';
 
 type TypeInputProps = {
     type: string
-    onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void
     value: number
-    className?: string
+    className: string
 }
 
 export const Input = (

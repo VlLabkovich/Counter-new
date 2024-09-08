@@ -8,7 +8,7 @@ type PropsTableCounter = {
     onChangeMaxState: number
 }
 
-export const TableCounter = React.memo((
+const TableCounter = React.memo((
     {
         counter,
         maxState,
@@ -37,6 +37,8 @@ export const TableCounter = React.memo((
     )
 }
 )
+
+export default TableCounter;
 
 // TableCounter_Backup
 //

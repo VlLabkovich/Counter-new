@@ -2,9 +2,9 @@ import React from 'react';
 
 type TypeButtonProps = {
     name: string
-    classname?: string
+    classname: string
     onClick: () => void
-    disabled: boolean
+    disabled?: boolean
 }
 
 
